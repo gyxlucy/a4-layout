@@ -105,7 +105,7 @@ export function A4Page({ page, pageIndex }: A4PageProps) {
     }
   };
 
-  const handleStageMouseMove = (e: Konva.KonvaEventObject<MouseEvent>) => {
+  const handleStageMouseMove = (_e: Konva.KonvaEventObject<MouseEvent>) => {
     if (!selectionStart.current) return;
     const stage = stageRef.current;
     if (!stage) return;

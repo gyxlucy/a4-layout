@@ -36,15 +36,15 @@ export function ImageElement({ element, pageId, isSelected }: ImageElementProps)
 
   if (!imgData || !image) return null;
 
-  const handleDblClick = (e: Konva.KonvaEventObject<MouseEvent>) => {
+  const handleDblClick = (e: Konva.KonvaEventObject<MouseEvent | TouchEvent>) => {
     e.cancelBubble = true;
     setCropTarget(element.id);
   };
 
-  const handleSelect = (e: Konva.KonvaEventObject<MouseEvent>) => {
+  const handleSelect = (e: Konva.KonvaEventObject<MouseEvent | TouchEvent>) => {
     e.cancelBubble = true;
     setActivePage(pageId);
-    if (e.evt.shiftKey) {
+    if ('shiftKey' in e.evt && e.evt.shiftKey) {
       toggleSelection(element.id);
     } else {
       setSelection(new Set([element.id]));
